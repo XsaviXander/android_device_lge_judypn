@@ -40,13 +40,13 @@ PRODUCT_MODEL := LM-V405
 
 PRODUCT_GMS_CLIENTID_BASE := android-om-lg
 
-TARGET_VENDOR_PRODUCT_NAME := judypn_lao_eea
+TARGET_VENDOR_PRODUCT_NAME := judypn_lao_com
 TARGET_VENDOR_DEVICE_NAME := judypn
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=judypn \
-    PRODUCT_NAME=judypn_lao_eea \
-    PRIVATE_BUILD_DESC="judypn_lao_eea-user 9 PKQ1.190202.001 191441032161a release-keys"
+    PRODUCT_NAME=judypn_lao_com \
+    PRIVATE_BUILD_DESC="judypn_lao_com-user 9 PKQ1.190202.001 1914914539688 release-keys"
 
-BUILD_FINGERPRINT="lge/judypn_lao_eea/judypn:9/PKQ1.190202.001/191441032161a:user/release-keys"
+BUILD_FINGERPRINT="lge/judypn_lao_com/judypn:9/PKQ1.190202.001/1914914539688:user/release-keys"
 

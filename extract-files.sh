@@ -49,7 +49,7 @@ while [ "$1" != "" ]; do
 done
 
 if [ -z "$SRC" ]; then
-    SRC=/home/cock/files/405qa
+    SRC=/home/xsavtyri/files/405qa
 fi
 
 # Initialize the helper
