@@ -4,7 +4,7 @@
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.multisim.config=none
+    persist.radio.multisim.config=single
 
 # Security Patch Level
 PRODUCT_PROPERTY_OVERRIDES += \
