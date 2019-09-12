@@ -38,10 +38,10 @@ if [ $RU == "1" ]; then
     VENDOR_PRODUCT_NAME=$(echo ${VENDOR_PRODUCT_NAME} | sed -r 's/_com/_ru/')
 fi
 
-COM=`getprop ro.boot.product.lge.com_type`
-if [ "$COM" != "" ]; then
-    VENDOR_FINGERPRINT=$(echo ${VENDOR_FINGERPRINT} | sed -r "s/_com/_com/")
-    VENDOR_PRODUCT_NAME=$(echo ${VENDOR_PRODUCT_NAME} | sed -r "s/_com/_com/")
+EEA=`getprop ro.boot.product.lge.eea_type`
+if [ "$EEA" != "" ]; then
+    VENDOR_FINGERPRINT=$(echo ${VENDOR_FINGERPRINT} | sed -r "s/_com/_eea/")
+    VENDOR_PRODUCT_NAME=$(echo ${VENDOR_PRODUCT_NAME} | sed -r "s/_com/_eea/")
 fi
 
 setprop ro.vendor.lge.build.fingerprint ${VENDOR_FINGERPRINT}

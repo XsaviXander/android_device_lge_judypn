@@ -19,6 +19,10 @@ DEVICE_PATH := device/lge/judypn
 # inherit from common v30
 -include device/lge/sdm845-common/BoardConfigCommon.mk
 
+# Kernel
+BOARD_KERNEL_CMDLINE += androidboot.hardware=judypn
+TARGET_KERNEL_CONFIG := lineageos_judypn_defconfig
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
@@ -26,10 +30,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
-
-# Kernel
-BOARD_KERNEL_CMDLINE += androidboot.hardware=judypn
-TARGET_KERNEL_CONFIG := lineageos_judypn_defconfig
 
 # Partitions
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 113775689728

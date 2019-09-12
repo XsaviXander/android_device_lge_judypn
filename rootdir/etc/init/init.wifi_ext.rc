@@ -1,5 +1,4 @@
-#!/vendor/bin/sh
-# Copyright (c) 2015,2018 The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, Code Aurora Forum. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -8,7 +7,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
+#     * Neither the name of Code Aurora nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
 #       permission.
@@ -26,22 +25,33 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#
-# Function to start sensors for SSC enabled platforms
-#
-start_sensors()
-{
-    sscrpcd_status=`getprop init.svc.vendor.sensors`
-    chmod -h 664 /persist/sensors/sensors_settings
-    chown -h -R system.system /persist/sensors
-    chown -R system.system /mnt/vendor/sns/sensors/registry/registry/*
-    chown -h system.system /mnt/vendor/sns/sensors/registry/sns_version
-    start vendor.sensors.qti
+#[START][LGE_WIFI][COMMON]: TO exec system command from LGFTM
+on property:persist.vendor.lge.wlan.kpi_start=1
+  restart vendor.wlan_logger
 
-    # Only for SLPI
-    if [ -c /dev/msm_dsps -o -c /dev/sensors ] && [ -z "$sscrpcd_status" ]; then
-        start vendor.sensors
-    fi
-}
+on property:persist.vendor.lge.wlan.kpi_start=0
+  stop vendor.wlan_logger
 
-start_sensors
+service vendor.wlan_logger /system/vendor/bin/cnss_diag -q -f -t HELIUM
+  user system
+  class main
+  group system wifi inet sdcard_rw
+  disabled
+  oneshot
+#[END][LGE_WIFI][COMMON]: TO exec system command from LGFTM
+
+# 2012.08.24 real-wifi@lge.com[wo0gi] TestMode Daemon for broadcom driver [START]
+service vendor.diagd /vendor/bin/diagd
+  class late_start
+  user root
+  group radio system
+  disabled
+  oneshot
+  socket lsock_diagd stream 666
+
+on property:vendor.lge.wifi_ftm.diagd_start=1
+  start vendor.diagd
+
+on property:vendor.lge.wifi_ftm.diagd_start=0
+  stop vendor.diagd
+# 2012.08.24 real-wifi@lge.com[wo0gi] TestMode Daemon for broadcom driver [END]
