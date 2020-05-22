@@ -29,15 +29,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Inherit from judypn device
 $(call inherit-product, device/lge/judypn/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Havoc stuff.
+$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
 
 # Overlays (inherit after vendor/cm to ensure we override it)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Device identifiers
 
-PRODUCT_NAME := lineage_judypn
+PRODUCT_NAME := havoc_judypn
 PRODUCT_DEVICE := judypn
 PRODUCT_BRAND := lge
 PRODUCT_MANUFACTURER := LGE
@@ -52,9 +52,9 @@ TARGET_VENDOR_DEVICE_NAME := judypn
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=judypn \
     PRODUCT_NAME=judypn_lao_eea \
-    PRIVATE_BUILD_DESC="judypn_lao_eea-user 9 PKQ1.190202.001 193651201ed2d release-keys"
+    PRIVATE_BUILD_DESC="coral-user 10 QQ2A.200501.001.B2 6352890 release-keys"
 
-BUILD_FINGERPRINT="lge/judypn_lao_eea/judypn:9/PKQ1.190202.001/193651201ed2d:user/release-keys"
+BUILD_FINGERPRINT="google/coral/coral:10/QQ2A.200501.001.B2/6352890:user/release-keys"
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.product.model \
